@@ -4,7 +4,7 @@ group members full name and student ID in this file.
 GROUP MEMEBERS:
 1)
 2)
-3)
+3)Ahsen Durmaz, 2311051030 (Queue, Library)
 4)
 5)Sofiia Valikaramova, 2411011008 (Main, Library, Book and Readme)
 
