@@ -2,7 +2,7 @@ Prepare a separate txt file to explain your Project clearly. Include your
 group members full name and student ID in this file.
 
 GROUP MEMEBERS:
-1)
+1)Emine Şule Karaalp, 2311051033 (Dynamic array, Book, Library)
 2)
 3)Ahsen Durmaz, 2311051030 (Queue, Library)
 4)
