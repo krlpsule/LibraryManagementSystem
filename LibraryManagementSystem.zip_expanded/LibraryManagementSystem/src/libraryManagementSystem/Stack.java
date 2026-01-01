@@ -1,87 +1,72 @@
 package libraryManagementSystem;
 
 /*
- * MEMBER 4 – STACK & UNDO FEATURE
- * Name   : Ayşegül Özdemir
- * ID     : 2311051036
+ 
+ * This Stack class is used to support the Undo feature in the
+ * Library Management System.
  *
- * Responsibilities:
- * - Custom Stack implementation (LIFO)
- * - Store borrow / return actions
- * - Support Undo last action feature
+ * Data Structure: Stack (LIFO – Last In First Out)
  *
- * NOTE:
- * This file contains ALL responsibilities of Member 4.
- * It is integrated by calling methods from Library.java.
+ * The stack stores actions as String values 
  */
 
 public class Stack {
 
     /*
-     * Action class represents a Borrow or Return operation
-     */
-    public static class Action {
-        private int bookId;
-        private boolean previousAvailability;
-
-        public Action(int bookId, boolean previousAvailability) {
-            this.bookId = bookId;
-            this.previousAvailability = previousAvailability;
-        }
-
-        public int getBookId() {
-            return bookId;
-        }
-
-        public boolean getPreviousAvailability() {
-            return previousAvailability;
-        }
-    }
-
-    /*
-     * Node class for Stack (Linked List based)
+     * Node class represents a single element in the stack.
+     * Each node stores one action (String) and a reference
+     * to the next node in the stack.
      */
     private static class Node {
-        Action data;
-        Node next;
+        String data;   // Stores the action information
+        Node next;     // Reference to the next node
 
-        Node(Action data) {
+        Node(String data) {
             this.data = data;
             this.next = null;
         }
     }
 
+    // Top of the stack (last inserted element)
     private Node top;
 
+    /*
+     * Constructor initializes an empty stack
+     */
     public Stack() {
         top = null;
     }
 
     /*
-     * Push an action onto the stack
+     * Pushes a new action onto the stack
+     *
      * Worst-case Time Complexity: O(1)
+     * Because insertion is done at the top of the stack.
      */
-    public void push(Action action) {
-        Node newNode = new Node(action);
-        newNode.next = top;
-        top = newNode;
+    public void push(String data) {
+        Node newNode = new Node(data); // Create new node
+        newNode.next = top;            // Point to previous top
+        top = newNode;                 // Update top
     }
 
     /*
-     * Pop the last action from the stack
+     * Removes and returns the last action from the stack
+     *
      * Worst-case Time Complexity: O(1)
+     * Because removal is done from the top of the stack.
      */
-    public Action pop() {
-        if (top == null) {
-            return null;
-        }
-        Action action = top.data;
-        top = top.next;
-        return action;
+    public String pop() {
+        if (top == null)
+            return null;               // Stack is empty
+
+        String data = top.data;        // Get top element
+        top = top.next;                // Remove top
+        return data;                   // Return removed data
     }
 
     /*
-     * Check whether stack is empty
+     * Checks whether the stack is empty
+     *
      * Worst-case Time Complexity: O(1)
      */
     public boolean isEmpty() {
