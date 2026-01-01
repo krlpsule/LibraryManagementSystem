@@ -4,7 +4,7 @@ Group Members:
 1)Emine Şule Karaalp, 2311051033 (Dynamic array, Book, Library)
 2)
 3)Ahsen Durmaz, 2311051030 (Queue, Library)
-4)Ayşegül Özdemir , 2311051036 , ((Stack, Undo Feature, Library)
+4)Ayşegül Özdemir , 2311051036 , (Stack, Undo Feature, Library)
 5)Sofiia Valikaramova, 2411011008 (Main, Library, Book and Readme)
 
 PROJECT DETAILS
