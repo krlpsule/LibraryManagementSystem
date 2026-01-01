@@ -1,7 +1,7 @@
 package libraryManagementSystem;
 
 import java.io.*;
-import java.util.Stack;
+
 
 public class Library {
 
@@ -12,7 +12,7 @@ public class Library {
 
     private Queue<Queue.BorrowRequest> requestQueue = new Queue<>();
 
-    private Stack<String> actionStack = new Stack<>();
+    private Stack actionStack = new Stack();
 
     private Queue<Integer> borrowQueue = new Queue<>();
 
@@ -184,15 +184,31 @@ public class Library {
         }
     }
 
-    // O(n) waiting for stack
-    public void undo() {
-        if (actionStack.isEmpty()) return;//if there are no action, return
+    
+   // O(n) – In the worst case, searching the book by ID takes linear time
+public void undo() {
 
-        String[] a = actionStack.pop().split(",");//otherwise pop the stack
-        Book b = searchById(Integer.parseInt(a[1]));
-        if (b == null) return;
+    // If there is no action stored in the stack, there is nothing to undo
+    if (actionStack.isEmpty())
+        return;
 
-        b.setAvailable(a[0].equals("BORROW"));//change the availability
-        saveBooks();//save info
-    }
+    // Pop the last action from the stack (LIFO principle)
+    // Action format example: "BORROW,3" or "RETURN,5"
+    String[] a = actionStack.pop().split(",");
+
+    // Convert the book ID from String to integer and search the book
+    Book b = searchById(Integer.parseInt(a[1]));
+
+    // If the book does not exist anymore, undo operation cannot continue
+    if (b == null)
+        return;
+
+    // If the last action was BORROW, we make the book available again
+    // If the last action was RETURN, we make the book unavailable
+    b.setAvailable(a[0].equals("BORROW"));
+
+    // Save the updated book information to the file
+    saveBooks();
+}
+
 }
