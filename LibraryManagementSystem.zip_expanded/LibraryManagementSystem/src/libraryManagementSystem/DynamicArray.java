@@ -53,13 +53,13 @@ public class DynamicArray<T> {
         return removedElement;
     }
 
-    //size function
+    //size function, O(1) complexity
     public int size() {
         return size;
     }
 
     // (Resizing Logic)
-    // It doubles the size
+    // It doubles the size, O(n) complexity
     @SuppressWarnings("unchecked")
     private void resize() {
         int newCapacity = capacity * 2;
