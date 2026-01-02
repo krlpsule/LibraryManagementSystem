@@ -16,7 +16,7 @@ public class DynamicArray<T> {
     // Add method
     // Time Complexity: Average O(1), If it needs to grow  O(N)
     public void add(T element) {
-        if (size == capacity) {
+        if (size == capacity) {  //If array is full, call the resize function and double array
             resize();
         }
         array[size] = element;
@@ -59,10 +59,10 @@ public class DynamicArray<T> {
     }
 
     // (Resizing Logic)
-    // It doubles the size, O(n) complexity
+    // It doubles the size, O(n) complexity because we are copying the elements from the old array to new array
     @SuppressWarnings("unchecked")
     private void resize() {
-        int newCapacity = capacity * 2;
+        int newCapacity = capacity * 2; //Doubling the array
         T[] newArray = (T[]) new Object[newCapacity];
 
         // Copy the elements from old array
