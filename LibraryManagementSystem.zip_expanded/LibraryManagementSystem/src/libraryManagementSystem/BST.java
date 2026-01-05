@@ -1,8 +1,5 @@
 package libraryManagementSystem;
 
-import java.util.ArrayList;
-import java.util.List;
-
 // BST class is used to search books by title and list them alphabetically
 // using Binary Search Tree (BST) data structure.
 public class BST {
@@ -60,19 +57,19 @@ public class BST {
         return searchRec(root.right, title);                // otherwise, search right subtree
     }
 
-    // worst-case timecComplexity: O(n), since it returns all books in alphabetical order using in-order traversal
-    public List<Book> inOrderTraversal() {
-        List<Book> list = new ArrayList<>();
+    // worst-case time complexity: O(n), since it returns all books in alphabetical order using in-order traversal
+     public DynamicArray<Book> inOrderTraversal() {
+        DynamicArray<Book> list = new DynamicArray<>();
         inOrderRec(root, list);
         return list;
     }
     
     // recursive helper method for in-order traversal
-    private void inOrderRec(Node root, List<Book> list) {
-        if (root != null) {
-            inOrderRec(root.left, list);       // Visit left subtree
-            list.add(root.data);               // Visit root
-            inOrderRec(root.right, list);      // Visit right subtree
+    private void inOrderRec(Node node, DynamicArray<Book> list) {
+        if (node != null) {
+            inOrderRec(node.left, list);     // visit left subtree
+            list.add(node.data);             // visit root
+            inOrderRec(node.right, list);    // visit right subtree
         }
     }
     
