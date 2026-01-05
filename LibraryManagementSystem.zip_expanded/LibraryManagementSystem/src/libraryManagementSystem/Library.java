@@ -146,10 +146,13 @@ public class Library {
             System.out.println(catalog.get(i));//while printing the values
     }
 
-    // O(n) using the inorder traversal, we print the ordered tree
+   // O(n) in-order traversal visits every node once
     public void listAlphabetically() {
-        for (Book b : bst.inOrderTraversal())//using the inorder traversal, we print the ordered tree
-            System.out.println(b);
+        // using DynamicArray requires indexed loop
+        DynamicArray<Book> books = bst.inOrderTraversal();  // O(n)
+        for (int i = 0; i < books.size(); i++) {           // O(n)
+            System.out.println(books.get(i));              // O(1)
+        }
     }
 
     // O(n) check the book list and if this id doesnt exist return
